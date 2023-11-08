@@ -1,7 +1,8 @@
 // Dependencies
 const express = require('express');
-const fs = require('fs');
 const path = require('path');
+const htmlRoutes = require('./routes/apiroutes');
+const apiRoutes = require('./routes/apiroutes');
 
 // creating port
 const PORT = process.env.PORT || 3001;
@@ -15,15 +16,8 @@ app.use(express.json());
 
 // asks express to create a route for every file in the 'public' folder 
 app.use(express.static('public'));
-
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'notes.html'))
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'))
-});
-
+app.use('/', htmlRoutes);
+app.use('/', apiRoutes);
 
 // app listener 
 app.listen(PORT, () => {
