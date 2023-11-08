@@ -1,27 +1,31 @@
 // Dependencies
 const express = require('express');
-
-// To use express
-const app = express();
+const fs = require('fs');
+const path = require('path');
 
 // creating port
 const PORT = process.env.PORT || 3001;
 
+// To use express
+const app = express();
+
+// Middleware for parsing JSON and urlencoded form data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // asks express to create a route for every file in the 'public' folder 
 app.use(express.static('public'));
 
-// sets up express app to handle middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(dir_name, 'notes.html'))
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(dir_name, 'index.html'))
+});
 
 
-// routes to route files
-app.require('./routes/api');
-app.require('./routes/html');
-
-
-// app listener - starts the server
+// app listener 
 app.listen(PORT, () => {
-  console.log(`Listening at localhost${PORT}`);
+    console.log(`Listening at localhost${PORT}`);
 });
