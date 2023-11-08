@@ -17,11 +17,11 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(dir_name, 'notes.html'))
+    res.sendFile(path.join(__dirname, 'notes.html'))
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(dir_name, 'index.html'))
+    res.sendFile(path.join(__dirname, 'index.html'))
 });
 
 
