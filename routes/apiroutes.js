@@ -45,7 +45,7 @@ router.delete('/:note_id', (req, res) => {
       .then((data) => JSON.parse(data))
       .then((json) => {
       
-        const result = json.filter((title) => title.note_id !== noteId);
+        const result = json.filter((db) => db.note_id !== noteId);
   
         // Save that array to the filesystem
         writeToFile('./db/db.json', result);
