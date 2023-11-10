@@ -1,10 +1,13 @@
-const fs = require('fs');
+// const fs = require('fs');
 const router = require('express').Router();
 // const uniqid = require('uniqid');
 
 router.get('/api/notes', (req, res) => {
     fs.readFileSync('./db/db.json', 'utf8').then((data) => res.json(JSON.parse(data)));
   });
+
+
+
 // GET /api/notes should read the json db.json file and return saved notes
 // router.get('/api/notes', (req, res) => {
 //     res.json(dbData);
