@@ -7,16 +7,16 @@
     {
         "title": "Pizza",
         "text": "Get the pizza",
-        "note_id": "lr2znplot1pakc"
+        "id": "lr2znplot1pakc"
     },
     {
         "title": "Go to school",
         "text": "Get the backpack",
-        "note_id": "lr2znplot1pqd3"
+        "id": "lr2znplot1pqd3"
     },
     {
         "title": "Pick up the cat",
         "text": "At the boarding facility",
-        "note_id": "lr2107qlot2jgmk"
+        "id": "lr2107qlot2jgmk"
     }
 ]

@@ -28,7 +28,7 @@ router.get('/notes', (req, res) => {
       const newNote = {
         title,
         text,
-        note_id: uniqid(),
+        id: uniqid(),
       };
   
       readAndAppend(newNote, './db/db.json');
@@ -39,13 +39,13 @@ router.get('/notes', (req, res) => {
   });
 
 // DELETE Route for a specific note
-router.delete('/:note_id', (req, res) => {
-    const noteId = req.params.note_id;
+router.delete('/notes:id', (req, res) => {
+    const noteId = req.params.id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
       
-        const result = json.filter((db) => db.note_id !== noteId);
+        const result = json.filter((note) => note.id !== noteId);
   
         // Save that array to the filesystem
         writeToFile('./db/db.json', result);
