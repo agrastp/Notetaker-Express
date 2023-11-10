@@ -4,6 +4,7 @@ const router = require('express').Router();
 const {
     readFromFile,
     readAndAppend,
+    writeToFile,
   } = require('../helpers/fsUtils');
 const uniqid = require('uniqid');
 
@@ -37,13 +38,13 @@ router.get('/notes', (req, res) => {
     }
   });
 
-// DELETE Route for a specific tip
+// DELETE Route for a specific note
 router.delete('/:note_id', (req, res) => {
     const noteId = req.params.note_id;
     readFromFile('./db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
-        // Make a new array of all tips except the one with the ID provided in the URL
+      
         const result = json.filter((title) => title.note_id !== noteId);
   
         // Save that array to the filesystem
