@@ -1,11 +1,14 @@
-// const fs = require('fs');
+//Import express
 const router = require('express').Router();
 
+//Import the helpers file
 const {
     readFromFile,
     readAndAppend,
     writeToFile,
   } = require('../helpers/fsUtils');
+
+//Imports the uniqid package
 const uniqid = require('uniqid');
 
 // GET /api/notes should read the json db.json file and return saved notes
@@ -17,7 +20,7 @@ router.get('/notes', (req, res) => {
 
 
 // POST /api/notes should revieve a new note to save on the req.body, add it to db.json and return to the client
-//Each note will need a unique id using the npm package uniqid
+//Each note has a unique id using the npm package uniqid
 
   router.post('/notes', (req, res) => {
     console.log(req.body);
@@ -38,7 +41,7 @@ router.get('/notes', (req, res) => {
     }
   });
 
-// DELETE Route for a specific note
+// DELETE Route for a specific note.....this is not working yet
 router.delete('/notes:id', (req, res) => {
     const noteId = req.params.id;
     readFromFile('./db/db.json')
