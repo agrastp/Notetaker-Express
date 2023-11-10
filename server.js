@@ -17,9 +17,10 @@ app.use(express.json());
 // asks express to create a route for every file in the 'public' folder 
 app.use(express.static('public'));
 app.use('/', htmlRoutes);
-app.use('/', apiRoutes);
+app.use('/api', apiRoutes);
+
 
 // app listener 
-app.listen(PORT, () => {
-    console.log(`Listening at localhost${PORT}`);
-});
+app.listen(PORT, () => 
+    console.log(`Listening at localhost${PORT}`)
+);
